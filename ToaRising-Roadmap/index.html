@@ -1,425 +1,54 @@
-import React, { useState } from 'react';
-import { Play, Server, Database, Shield, Globe, Code, Users, CheckCircle, Circle, ArrowRight } from 'lucide-react';
-
-const TechnicalRoadmap = () => {
-  const [selectedPhase, setSelectedPhase] = useState('foundation');
-  const [completedSkills, setCompletedSkills] = useState(['HTML Basics', 'AWS Cloud Practitioner', 'Docker Basics', 'Kubernetes Basics']);
-
-  const phases = [
-    {
-      id: 'foundation',
-      name: 'Foundation (Next 3-6 months)',
-      color: 'from-green-500 to-green-600',
-      priority: 'FOCUS HERE FIRST',
-      description: 'Build core web development skills'
-    },
-    {
-      id: 'platform',
-      name: 'Platform Core (6-12 months)',
-      color: 'from-blue-500 to-blue-600',
-      priority: 'THEN BUILD',
-      description: 'Create basic streaming platform'
-    },
-    {
-      id: 'scale',
-      name: 'Scale & Polish (12+ months)',
-      color: 'from-purple-500 to-purple-600',
-      priority: 'FINALLY SCALE',
-      description: 'Add advanced features & scale'
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Toa Rising Roadmap</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #0f172a;
+      color: #f1f5f9;
+      margin: 0;
+      padding: 2rem;
     }
-  ];
-
-  const technicalStack = {
-    foundation: {
-      frontend: [
-        { name: 'HTML/CSS', status: 'learning', time: '2-3 weeks', why: 'Page structure & styling' },
-        { name: 'JavaScript', status: 'next', time: '4-6 weeks', why: 'Interactive features' },
-        { name: 'React', status: 'future', time: '3-4 weeks', why: 'Component-based UI' },
-        { name: 'Tailwind CSS', status: 'future', time: '1-2 weeks', why: 'Rapid styling' }
-      ],
-      backend: [
-        { name: 'Node.js', status: 'future', time: '3-4 weeks', why: 'Server-side JavaScript' },
-        { name: 'Express.js', status: 'future', time: '2-3 weeks', why: 'Web framework' },
-        { name: 'REST APIs', status: 'future', time: '2-3 weeks', why: 'Data communication' }
-      ],
-      cloud: [
-        { name: 'AWS Solutions Architect', status: 'studying', time: 'ongoing', why: 'Advanced cloud architecture' },
-        { name: 'Azure AZ-900', status: 'studying', time: 'ongoing', why: 'Multi-cloud knowledge' }
-      ]
-    },
-    platform: {
-      streaming: [
-        { name: 'Video.js', status: 'future', time: '2-3 weeks', why: 'Video player' },
-        { name: 'HLS/DASH', status: 'future', time: '3-4 weeks', why: 'Video streaming protocols' },
-        { name: 'FFmpeg', status: 'future', time: '2-3 weeks', why: 'Video processing' },
-        { name: 'CloudFront CDN', status: 'future', time: '1-2 weeks', why: 'Global video delivery' }
-      ],
-      database: [
-        { name: 'PostgreSQL', status: 'future', time: '2-3 weeks', why: 'User data & metadata' },
-        { name: 'MongoDB', status: 'future', time: '2-3 weeks', why: 'Content metadata' },
-        { name: 'Redis', status: 'future', time: '1-2 weeks', why: 'Caching & sessions' }
-      ],
-      auth: [
-        { name: 'JWT', status: 'future', time: '1-2 weeks', why: 'User authentication' },
-        { name: 'OAuth', status: 'future', time: '1-2 weeks', why: 'Social login' },
-        { name: 'AWS Cognito', status: 'future', time: '1-2 weeks', why: 'User management' }
-      ]
-    },
-    scale: {
-      infrastructure: [
-        { name: 'Terraform', status: 'familiar', time: '2-3 weeks', why: 'Infrastructure as code' },
-        { name: 'Kubernetes', status: 'familiar', time: '4-6 weeks', why: 'Container orchestration' },
-        { name: 'CI/CD Pipelines', status: 'familiar', time: '2-3 weeks', why: 'Automated deployment' }
-      ],
-      monitoring: [
-        { name: 'Prometheus', status: 'expert', time: 'already know', why: 'Metrics collection' },
-        { name: 'Grafana', status: 'expert', time: 'already know', why: 'Monitoring dashboards' },
-        { name: 'ELK Stack', status: 'future', time: '2-3 weeks', why: 'Log analysis' }
-      ],
-      advanced: [
-        { name: 'Microservices', status: 'future', time: '4-6 weeks', why: 'Service separation' },
-        { name: 'GraphQL', status: 'future', time: '2-3 weeks', why: 'Flexible API' },
-        { name: 'WebSockets', status: 'future', time: '1-2 weeks', why: 'Real-time features' }
-      ]
+    h1 {
+      color: #38bdf8;
     }
-  };
-
-  const detailedLearningPath = [
-    {
-      skill: 'HTML fundamentals',
-      time: '1-2 weeks',
-      project: 'Basic Polynesian Content Page Structure',
-      fundamentals: [
-        'HTML document structure (<!DOCTYPE>, <html>, <head>, <body>)',
-        'Essential tags: headings (h1-h6), paragraphs (p), divs, spans',
-        'Text formatting: bold, italic, underline, lists (ul, ol, li)',
-        'Links and navigation (a href, target attributes)',
-        'Images (img src, alt text, responsive images)',
-        'Forms (input, textarea, button, select, form attributes)',
-        'Tables (table, tr, td, th for data display)',
-        'Semantic HTML (header, nav, main, section, article, footer)',
-        'Meta tags (viewport, description, keywords)',
-        'HTML validation and best practices'
-      ],
-      weeklyGoals: [
-        'Week 1: Master basic structure, headings, text, links, images',
-        'Week 2: Forms, tables, semantic HTML, build complete page'
-      ],
-      resources: [
-        'MDN HTML Documentation',
-        'freeCodeCamp HTML Course',
-        'Codecademy HTML Course',
-        'W3Schools HTML Tutorial'
-      ]
-    },
-    {
-      skill: 'Complete CSS fundamentals',
-      time: '2-3 weeks',
-      project: 'Style Your Polynesian Content Page',
-      fundamentals: [
-        'CSS Selectors (element, class, ID)',
-        'Box Model (margin, padding, border)',
-        'Flexbox for layout',
-        'Grid for complex layouts',
-        'Responsive design (media queries)',
-        'Colors, fonts, spacing',
-        'Positioning (relative, absolute, fixed)',
-        'Transitions and basic animations'
-      ],
-      weeklyGoals: [
-        'Week 1: Master selectors, box model, basic styling',
-        'Week 2: Flexbox, Grid, responsive design',
-        'Week 3: Polish your landing page project'
-      ],
-      resources: [
-        'MDN CSS Documentation',
-        'CSS-Tricks Flexbox Guide',
-        'Codecademy CSS Course',
-        'freeCodeCamp Responsive Web Design'
-      ]
-    },
-    {
-      skill: 'JavaScript basics + DOM manipulation',
-      time: '4-6 weeks',
-      project: 'Interactive Video Gallery with Search',
-      fundamentals: [
-        'Variables (let, const, var)',
-        'Data types (strings, numbers, arrays, objects)',
-        'Functions (regular and arrow functions)',
-        'Conditionals (if/else, switch)',
-        'Loops (for, while, forEach)',
-        'DOM selection (getElementById, querySelector)',
-        'Event listeners (click, input, submit)',
-        'Manipulating HTML (innerHTML, textContent)',
-        'Array methods (map, filter, find)',
-        'Fetch API for HTTP requests'
-      ],
-      weeklyGoals: [
-        'Week 1: Variables, functions, basic syntax',
-        'Week 2: Arrays, objects, loops',
-        'Week 3: DOM manipulation, event listeners',
-        'Week 4: Build interactive features',
-        'Week 5-6: Polish gallery project, add search'
-      ],
-      resources: [
-        'JavaScript.info (excellent free resource)',
-        'MDN JavaScript Guide',
-        'Codecademy JavaScript Course',
-        'freeCodeCamp JavaScript Algorithms'
-      ]
-    },
-    {
-      skill: 'React fundamentals',
-      time: '3-4 weeks',
-      project: 'Component-based Video Platform MVP',
-      fundamentals: [
-        'JSX syntax and rules',
-        'Components (functional components)',
-        'Props (passing data between components)',
-        'State (useState hook)',
-        'Event handling in React',
-        'Conditional rendering',
-        'Lists and keys (mapping over arrays)',
-        'useEffect hook for side effects',
-        'Component lifecycle basics',
-        'Styling components'
-      ],
-      weeklyGoals: [
-        'Week 1: JSX, components, props',
-        'Week 2: State, event handling, conditional rendering',
-        'Week 3: useEffect, component lifecycle',
-        'Week 4: Build complete video platform MVP'
-      ],
-      resources: [
-        'React.dev (official React docs)',
-        'Codecademy React Course',
-        'freeCodeCamp React Course',
-        'React Tutorial by Kent C. Dodds'
-      ]
-    },
-    {
-      skill: 'Node.js + Express',
-      time: '4-6 weeks',
-      project: 'API for Video Metadata & User Management',
-      fundamentals: [
-        'Node.js runtime and modules',
-        'npm and package.json',
-        'Express.js setup and routing',
-        'Middleware concepts',
-        'Request/Response objects',
-        'REST API principles',
-        'JSON handling',
-        'Environment variables',
-        'Error handling',
-        'File system operations'
-      ],
-      weeklyGoals: [
-        'Week 1: Node.js basics, npm, modules',
-        'Week 2: Express setup, routing, middleware',
-        'Week 3: REST API design and implementation',
-        'Week 4: Error handling, file operations',
-        'Week 5-6: Build complete API for your platform'
-      ],
-      resources: [
-        'Node.js Documentation',
-        'Express.js Documentation',
-        'Codecademy Node.js Course',
-        'freeCodeCamp Node.js Tutorial'
-      ]
+    .container {
+      max-width: 800px;
+      margin: auto;
     }
-  ];
-
-  const toggleSkillCompletion = (skillName) => {
-    setCompletedSkills(prev => 
-      prev.includes(skillName) 
-        ? prev.filter(s => s !== skillName)
-        : [...prev, skillName]
-    );
-  };
-
-  const getStatusColor = (status) => {
-    switch(status) {
-      case 'expert': return 'bg-green-500';
-      case 'familiar': return 'bg-blue-500';
-      case 'learning': return 'bg-yellow-500';
-      case 'studying': return 'bg-orange-500';
-      default: return 'bg-gray-400';
+    a {
+      color: #facc15;
+      text-decoration: none;
     }
-  };
-
-  const getStatusText = (status) => {
-    switch(status) {
-      case 'expert': return 'Already Expert';
-      case 'familiar': return 'Basic Knowledge';
-      case 'learning': return 'Currently Learning';
-      case 'studying': return 'Currently Studying';
-      default: return 'Need to Learn';
+    a:hover {
+      text-decoration: underline;
     }
-  };
-
-  return (
-    <div className="w-full max-w-7xl mx-auto p-6 bg-gradient-to-br from-slate-50 to-slate-100 rounded-lg shadow-lg">
-      <div className="text-center mb-8">
-        <h2 className="text-3xl font-bold text-slate-800 mb-2">Polynesian Streaming Platform Roadmap</h2>
-        <p className="text-slate-600">Your learning path from NOC engineer to platform builder</p>
-      </div>
-
-      {/* Phase Selection */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-        {phases.map((phase) => (
-          <button
-            key={phase.id}
-            onClick={() => setSelectedPhase(phase.id)}
-            className={`p-4 rounded-lg border-2 transition-all duration-300 ${
-              selectedPhase === phase.id 
-                ? 'border-blue-500 bg-blue-50' 
-                : 'border-gray-200 bg-white hover:border-gray-300'
-            }`}
-          >
-            <div className={`w-12 h-12 rounded-full bg-gradient-to-br ${phase.color} flex items-center justify-center mx-auto mb-3`}>
-              <span className="text-white font-bold text-lg">{phase.id === 'foundation' ? '1' : phase.id === 'platform' ? '2' : '3'}</span>
-            </div>
-            <h3 className="font-bold text-slate-800 mb-1">{phase.name}</h3>
-            <p className="text-xs text-orange-600 font-semibold mb-2">{phase.priority}</p>
-            <p className="text-sm text-slate-600">{phase.description}</p>
-          </button>
-        ))}
-      </div>
-
-      {/* Technical Stack for Selected Phase */}
-      <div className="bg-white p-6 rounded-lg shadow-lg mb-8">
-        <h3 className="text-xl font-bold text-slate-800 mb-4">
-          {phases.find(p => p.id === selectedPhase)?.name} - Technical Requirements
-        </h3>
-        
-        <div className="space-y-6">
-          {Object.entries(technicalStack[selectedPhase]).map(([category, skills]) => (
-            <div key={category}>
-              <h4 className="font-semibold text-slate-700 mb-3 capitalize flex items-center">
-                {category === 'frontend' && <Code className="w-4 h-4 mr-2" />}
-                {category === 'backend' && <Server className="w-4 h-4 mr-2" />}
-                {category === 'cloud' && <Globe className="w-4 h-4 mr-2" />}
-                {category === 'streaming' && <Play className="w-4 h-4 mr-2" />}
-                {category === 'database' && <Database className="w-4 h-4 mr-2" />}
-                {category === 'auth' && <Shield className="w-4 h-4 mr-2" />}
-                {category === 'infrastructure' && <Server className="w-4 h-4 mr-2" />}
-                {category === 'monitoring' && <Users className="w-4 h-4 mr-2" />}
-                {category === 'advanced' && <Code className="w-4 h-4 mr-2" />}
-                {category}
-              </h4>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-                {skills.map((skill) => (
-                  <div key={skill.name} className="bg-gray-50 p-3 rounded-lg border">
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="font-medium text-slate-800">{skill.name}</span>
-                      <span className={`text-xs px-2 py-1 rounded-full text-white ${getStatusColor(skill.status)}`}>
-                        {getStatusText(skill.status)}
-                      </span>
-                    </div>
-                    <p className="text-xs text-slate-600 mb-1">{skill.why}</p>
-                    <p className="text-xs text-blue-600 font-medium">⏱️ {skill.time}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Detailed Learning Path */}
-      {selectedPhase === 'foundation' && (
-        <div className="bg-white p-6 rounded-lg shadow-lg">
-          <h3 className="text-xl font-bold text-slate-800 mb-4">Foundation Phase - Detailed Learning Path</h3>
-          
-          <div className="space-y-8">
-            {detailedLearningPath.map((step, index) => {
-              const isCompleted = completedSkills.includes(step.skill);
-              return (
-                <div key={index} className="border border-gray-200 rounded-lg p-6">
-                  <div className="flex items-start space-x-4 mb-4">
-                    <button
-                      onClick={() => toggleSkillCompletion(step.skill)}
-                      className="flex-shrink-0 mt-1"
-                    >
-                      {isCompleted ? (
-                        <CheckCircle className="w-6 h-6 text-green-500" />
-                      ) : (
-                        <Circle className="w-6 h-6 text-gray-400" />
-                      )}
-                    </button>
-                    <div className="flex-1">
-                      <h4 className={`text-lg font-semibold mb-2 ${isCompleted ? 'text-green-600 line-through' : 'text-slate-800'}`}>
-                        Step {index + 1}: {step.skill}
-                      </h4>
-                      <div className="grid md:grid-cols-2 gap-4 mb-4">
-                        <div>
-                          <p className="text-sm text-blue-600 font-medium mb-1">⏱️ Time: {step.time}</p>
-                          <p className="text-sm text-slate-600">🛠️ Project: {step.project}</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="grid lg:grid-cols-2 gap-6">
-                    <div>
-                      <h5 className="font-semibold text-slate-700 mb-3">📚 Fundamentals to Master:</h5>
-                      <ul className="space-y-2">
-                        {step.fundamentals.map((fundamental, i) => (
-                          <li key={i} className="flex items-start text-sm text-slate-600">
-                            <span className="w-2 h-2 bg-blue-500 rounded-full mr-3 mt-2 flex-shrink-0"></span>
-                            {fundamental}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    <div>
-                      <h5 className="font-semibold text-slate-700 mb-3">🎯 Weekly Goals:</h5>
-                      <ul className="space-y-2 mb-4">
-                        {step.weeklyGoals.map((goal, i) => (
-                          <li key={i} className="text-sm text-slate-600">
-                            <span className="font-medium text-blue-600">{goal.split(':')[0]}:</span>
-                            <span className="ml-1">{goal.split(':')[1]}</span>
-                          </li>
-                        ))}
-                      </ul>
-
-                      <h5 className="font-semibold text-slate-700 mb-3">📖 Recommended Resources:</h5>
-                      <ul className="space-y-1">
-                        {step.resources.map((resource, i) => (
-                          <li key={i} className="text-sm text-slate-600">
-                            • {resource}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-          
-          <div className="mt-8 p-4 bg-blue-50 rounded-lg border-l-4 border-blue-500">
-            <h4 className="font-semibold text-blue-800 mb-2">💡 Pro Tip from your NOC background:</h4>
-            <p className="text-sm text-blue-700">
-              Treat learning like monitoring systems - set up tracking for your progress, create daily/weekly "incidents" 
-              to review what you learned, and document everything. Your operational mindset is perfect for structured learning.
-            </p>
-          </div>
-
-          <div className="mt-6 p-4 bg-green-50 rounded-lg border-l-4 border-green-500">
-            <h4 className="font-semibold text-green-800 mb-2">🎯 Success Strategy:</h4>
-            <p className="text-sm text-green-700">
-              Focus on ONE skill at a time. Complete the fundamentals, build the project, then move to the next step. 
-              Don't jump ahead - each skill builds on the previous one. This is exactly like your infrastructure knowledge - 
-              you need solid networking before you can do advanced cloud architecture.
-            </p>
-          </div>
-        </div>
-      )}
-    </div>
-  );
-};
-
-export default TechnicalRoadmap;
+    ul {
+      padding-left: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🌊🔥 Toa Rising Roadmap</h1>
+    <p><strong>Born of the sea. Rising with fire.</strong></p>
+    <p>This roadmap guides the growth of Toa Rising — a platform built by and for the Pacific to empower, preserve, and tell our stories.</p>
+    
+    <h2>📂 Roadmap Documents</h2>
+    <ul>
+      <li><a href="roadmap.md">🗺️ roadmap.md</a> – Development phases and long-term plan</li>
+      <li><a href="features.md">🛠️ features.md</a> – Breakdown of app features</li>
+      <li><a href="timeline.md">📅 timeline.md</a> – Milestone-based development</li>
+      <li><a href="goals.md">🎯 goals.md</a> – Vision and long-term aspirations</li>
+      <li><a href="contributors.md">🤝 contributors.md</a> – Project crew and collaborators</li>
+      <li><a href="inspiration.md">🌺 inspiration.md</a> – Cultural and personal motivation</li>
+      <li><a href="inspiration-links.md">🌐 inspiration-links.md</a> – External resources & ideas</li>
+    </ul>
+    
+    <p>🧠 <em>“With roots in the past, we rise toward the future.”</em></p>
+  </div>
+</body>
+</html>
