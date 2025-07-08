@@ -1,0 +1,26 @@
+# macOS system files
+.DS_Store
+.localized
+
+# Personal folders you never want tracked again
+BC/
+Bills/
+Kids ID/
+Laptop Backup/
+PayStubs/
+Resume Folder/
+Cover Letter Folder/
+Study Plan/
+
+# Images
+*.jpg
+*.png
+*.jpeg
+*.heic
+*.webp
+
+# Certificates or sensitive docs
+*.pdf
+
+# Vercel
+.vercel
